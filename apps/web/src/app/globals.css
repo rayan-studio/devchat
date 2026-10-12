@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/*
+ * DevChat : un terminal ambre plutôt qu'un réseau social.
+ * Graphite chaud en fond, texte blanc cassé, une seule couleur vive : l'ambre,
+ * réservée à ce qui est actif (canal ouvert, curseur, action principale).
+ */
+@theme inline {
+  --color-rail: #141519;
+  --color-ground: #1b1c21;
+  --color-panel: #22232a;
+  --color-raised: #2a2b33;
+  --color-line: #31333c;
+  --color-text: #e8e4d9;
+  --color-muted: #9a978e;
+  --color-faint: #6b6a66;
+  --color-amber: #f2a541;
+  --color-amber-soft: #f2a5411f;
+  --color-ok: #7cc49a;
+  --color-danger: #e8705e;
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-ground);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-rail);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Barres de défilement discrètes */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+
+/* Le curseur bloc du champ de saisie : le seul élément animé de l'appli. */
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
+}

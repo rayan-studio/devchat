@@ -1,0 +1,21 @@
+{
+  "name": "devchat",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Chat d'équipe pour développeurs, relié à GitHub",
+  "workspaces": [
+    "apps/server",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace apps/server & npm run dev --workspace apps/web",
+    "dev:server": "npm run dev --workspace apps/server",
+    "dev:web": "npm run dev --workspace apps/web",
+    "build": "npm run build --workspace apps/server && npm run build --workspace apps/web",
+    "db:migrate": "npm run db:migrate --workspace apps/server",
+    "typecheck": "npm run typecheck --workspace apps/server && npm run typecheck --workspace apps/web"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

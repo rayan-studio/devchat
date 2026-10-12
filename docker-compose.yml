@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: devchat
+      POSTGRES_PASSWORD: devchat
+      POSTGRES_DB: devchat
+    ports:
+      - "5432:5432"
+    volumes:
+      - devchat-db:/var/lib/postgresql/data
+
+volumes:
+  devchat-db:
